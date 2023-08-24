@@ -9,7 +9,6 @@ const adminRoutes = require('./routes/adminRoute');
 const authMiddleware = require('./middleware/auth');
 const db = require('./config/db');
 const cors = require('cors');
-require('dotenv').config();
 const morgan = require('morgan');
 app.use(morgan('combined'));
 
@@ -24,7 +23,7 @@ app.use('/admin', adminRoutes);
 app.get('/',(req,res)=>{
     res.send("<h1>Express Working</h1>")
 })
-app.listen(process.env.PORT,async()=>{
+app.listen(8080,async()=>{
     try {
         await mongoose.connection
         console.log("Server connected")
@@ -32,5 +31,5 @@ app.listen(process.env.PORT,async()=>{
         console.log(error)
         console.log("Server not connected")
     }
-    console.log(`Server is running on port ${process.env.port}`)
+    console.log(`Server is running on port 8080`)
 })
